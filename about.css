@@ -1,0 +1,246 @@
+body{
+    background-color:light;
+}
+
+footer{
+    
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(33,41,51);
+    color: white;
+    text-align: center;
+    padding-top:25px;
+    
+}
+
+@media screen and (min-width: 600px) {
+    .Lumiere_img {
+        
+        transition: transform .2s;
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+    
+    .Lumiere_img:hover {
+        -ms-transform: scale(1.5); /* IE 9 */
+        -webkit-transform: scale(1.5); /* Safari 3-8 */
+        transform: scale(1.5);
+    }
+    .anr_img {
+        
+        transition: transform .2s;
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+    
+    .anr_img:hover {
+        -ms-transform: scale(1.5); /* IE 9 */
+        -webkit-transform: scale(1.5); /* Safari 3-8 */
+        transform: scale(1.5);
+    }
+    
+    .alcher_img {
+        
+        transition: transform .2s;
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+    
+    .alcher_img:hover {
+        -ms-transform: scale(1.5); /* IE 9 */
+        -webkit-transform: scale(1.5); /* Safari 3-8 */
+        transform: scale(1.5);
+    }
+
+
+    .text_lum{
+        text-align:left;
+        margin:20px;
+        position: relative;
+        left:15%;
+        
+    }
+    .lum{
+        width: 18rem;
+        position:relative;
+        right:25%
+    }
+    .h2_lum{
+        text-align:left;
+        margin:20px;
+        position: relative;
+        left:15%;
+        
+    }
+    .card_lum{
+        padding:2.5rem;
+        margin-top:3rem;
+        background-color:rgb(135, 209, 222);
+    }
+    .card_anr{
+        padding:2.5rem;
+        background-color:rgb(255,233, 183);
+    }
+    .card_alc{
+        padding:2.5rem;
+        background-color:rgb(242, 205, 219);
+    }
+    
+    .text_anr{
+        text-align:right;
+        margin:20px;
+        position: relative;
+        right:15%;
+    }
+    .anr{
+        width: 18rem;
+        position:relative;
+        left:35%
+        
+    }
+    .h2_anr{
+        text-align:right;
+        margin:20px;
+        position: relative;
+        right:15%;
+    }
+    .text_alc{
+        text-align:left;
+        margin:20px;
+        position: relative;
+        left:15%;
+    }
+    .alc{
+        width: 18rem;
+        position:relative;
+        right:25%
+        
+    }
+    .h2_alc{
+        text-align:left;
+        margin:20px;
+        position: relative;
+        left:15%;
+    }
+    .clubs{
+        text-align:center;
+        padding-top:2rem;
+        font-family: 'Tangerine', serif;
+        font-size:95px;
+    }
+    .hover{
+        text-align:center;
+    }
+    .end{
+        text-align:center;
+        margin:5rem;
+    }
+    
+    
+}
+
+@media screen and (max-width: 600px) {
+    
+    .Lumiere_img{
+        height:160px;
+        width:150px;
+        margin:auto;
+    }
+    .anr_img{
+        height:160px;
+        width:150px;
+        margin:auto;
+    }
+    .alcher_img{
+        height:160px;
+        width:150px;
+        margin:auto;
+       
+    }
+    .text_lum{
+        text-align:center;
+        margin:20px;
+        position: relative;
+        
+    }
+    .lum{
+        width: 18rem;
+        height:auto;
+        
+    }
+    .h2_lum{
+        text-align:center;
+        margin:20px;
+        position: relative;
+        
+    }
+    .card_lum{
+        padding:2.5rem;
+        margin-top:3rem;
+        background-color:rgb(135, 209, 222);
+    }
+    .card_anr{
+        padding:2.5rem;
+        background-color:rgb(255,233, 183);
+    }
+    .card_alc{
+        padding:2.5rem;
+        background-color:rgb(242, 205, 219);
+    }
+    
+    .text_anr{
+        text-align:center;
+        margin:20px;
+        position: relative;
+        
+    }
+    .anr{
+        width: 18rem;
+        position:relative;
+        
+        
+    }
+    .h2_anr{
+        text-align:center;
+        margin:20px;
+        position: relative;
+        
+    }
+    .text_alc{
+        text-align:center;
+        margin:20px;
+        position: relative;
+        
+    }
+    .alc{
+        width: 18rem;
+        position:relative;
+        
+        
+    }
+    .h2_alc{
+        text-align:center;
+        margin:20px;
+        position: relative;
+        
+    }
+    .clubs{
+        text-align:center;
+        padding-top:2rem;
+        font-size:45px;
+        font-family: 'Tangerine', serif;
+}
+    .hover{
+        text-align:center;
+        
+    }
+    .end{
+        text-align:center;
+        margin:5rem;
+    }
+}
+
