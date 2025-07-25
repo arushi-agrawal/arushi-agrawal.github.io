@@ -1,14 +1,14 @@
 # Site-wide settings
 # ------------------
 #
-title: Arushi Agrawal's Portfolio
+title: Arushi Agrawal
 
 author:
   name: Arushi Agrawal
   email: arushi.s.agrawal@gmail.com
+  github_username: arushi-agrawal
+  linkedin_username: arushi-agrawal
 
-description: >
-  Welcome to my portfolio. Here you can find my projects and learn more about my work.
 
 
 # Build settings
@@ -42,7 +42,7 @@ plugins:
 #  *All described config keys below should be nested under the top-level
 #   `minima` key.*
 #
-# minima:
+minima:
 #   Minima skin selection. Available skins are:
 #     * classic            Default, light color scheme.
 #     * dark               Dark variant of the classic skin.
@@ -56,8 +56,10 @@ plugins:
 #     If you wish to link only specific pages in the site-navigation, use this
 #     and list the `path` property (as represented via Liquid) of the pages in
 #     the order they should be rendered.
-#   nav_pages:
-#     - about.md
+  nav_pages:
+    - about.md
+    - experience.md
+    - projects.md
 #
 #   Set to `true` to show excerpts on the homepage.
 #   show_excerpts: false
@@ -73,13 +75,16 @@ plugins:
 #       * title    Tooltip rendered on hovering over icon.
 #       * icon     Font Awesome icon id. `github` corresponds to `fa-github`.
 #       * url      Full URL of social profile.
-social_links:
-  - title: GitHub
-    icon: github
-    url: "https://github.com/arushi-agrawal"
+  social_links:
+    - title: GitHub
+      icon: github
+      url: "https://github.com/arushi-agrawal"
+    - title: LinkedIn
+      icon: linkedin
+      url: "https://www.linkedin.com/in/arushi-agrawal"
 #
 #   Hide syndication feed subscription link.
 #     RSS / Atom feed link is always rendered as the last item of social-links
 #     list. Set below key to `true` to not have the link to feed rendered as
 #     part of social-links list.
-#   hide_site_feed_link: false
+  hide_site_feed_link: true

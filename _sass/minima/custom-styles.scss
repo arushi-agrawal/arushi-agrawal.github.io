@@ -1,2 +1,48 @@
-// Placeholder to allow defining custom styles that override everything else.
-// (Use `_sass/minima/custom-variables.scss` to override variable defaults)
+// Custom styles for the About page
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.about-text {
+  flex: 2;
+}
+
+.about-image {
+  flex: 1;
+  text-align: center;
+  margin-left: 2rem;
+
+  img {
+    border-radius: 50%;
+    max-width: 290px;
+    height: auto;
+    border: 3px solid #ddd;
+  }
+}
+
+// Remove the large "About" title from the page
+.post-header {
+  border: none;
+}
+
+.post-title {
+  display: none;
+}
+
+.social-media-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+}
+
+.site-footer {
+  background-color: #f8f9fa;
+}
+
