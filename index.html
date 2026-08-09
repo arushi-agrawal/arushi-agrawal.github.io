@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arushi Agrawal — Machine Learning Engineer</title>
+<meta name="description" content="Machine Learning Engineer in London building computer vision and 3D perception systems — from model architecture through distributed pipelines to production serving.">
+<meta name="author" content="Arushi Agrawal">
+<meta name="theme-color" content="#0A0C10">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arushi-agrawal.github.io/">
+<meta property="og:title" content="Arushi Agrawal — Machine Learning Engineer">
+<meta property="og:description" content="Computer vision & 3D perception. From model architecture through distributed pipelines to production serving.">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://arushi-agrawal.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A0C10'/%3E%3Cg fill='%2322D3EE'%3E%3Ccircle cx='16' cy='7' r='2'/%3E%3Ccircle cx='11' cy='16' r='2'/%3E%3Ccircle cx='21' cy='16' r='2'/%3E%3Ccircle cx='8' cy='25' r='2'/%3E%3Ccircle cx='24' cy='25' r='2'/%3E%3Ccircle cx='16' cy='19' r='1.6' opacity='.55'/%3E%3C/g%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0A0C10;
+  --bg-soft:#10141B;
+  --surface:#12161E;
+  --line:#1E242F;
+  --line-bright:#2C3542;
+  --txt:#E9ECF1;
+  --txt-dim:#98A1AE;
+  --txt-faint:#6B7482;
+  --accent:#22D3EE;
+  --accent-dim:#0E7490;
+  --maxw:1080px;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--txt);
+  font-family:var(--sans);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+a{color:inherit}
+h1,h2,h3{line-height:1.15;margin:0;font-weight:600;letter-spacing:-.02em}
+p{margin:0}
+::selection{background:var(--accent);color:#04262C}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+/* ---------- skip link ---------- */
+.skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:#04262C;
+  padding:10px 16px;font-weight:600;z-index:100;border-radius:0 0 6px 0}
+.skip:focus{left:0}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;
+  padding:120px 0 80px;overflow:hidden}
+#cloud{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-veil{position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(96deg, rgba(10,12,16,.97) 0%, rgba(10,12,16,.93) 30%, rgba(10,12,16,.6) 52%, rgba(10,12,16,.12) 78%, rgba(10,12,16,0) 100%),
+    linear-gradient(to bottom, rgba(10,12,16,.7) 0%, rgba(10,12,16,0) 18%, rgba(10,12,16,0) 62%, var(--bg) 100%);
+}
+@media (max-width:900px){
+  .hero-veil{background:
+    radial-gradient(78% 52% at 50% 45%, rgba(10,12,16,.93) 0%, rgba(10,12,16,.78) 45%, rgba(10,12,16,.3) 80%),
+    linear-gradient(to bottom, rgba(10,12,16,.8) 0%, rgba(10,12,16,.2) 20%, rgba(10,12,16,.2) 60%, var(--bg) 100%);
+  }
+}
+.hero-inner{position:relative;z-index:2;width:100%}
+
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);display:flex;align-items:center;gap:10px;margin-bottom:26px}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--accent);opacity:.6}
+
+h1{font-size:clamp(2.9rem,9vw,5.6rem);font-weight:700;letter-spacing:-.045em;margin-bottom:22px}
+h1 .ln{display:block}
+h1 .ln:last-child{color:var(--txt-dim)}
+
+.lede{font-size:clamp(1.05rem,2.1vw,1.3rem);color:var(--txt-dim);max-width:60ch;line-height:1.6}
+.lede b{color:var(--txt);font-weight:500}
+
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:12px 22px;border-radius:999px;
+  font-size:14.5px;font-weight:500;text-decoration:none;border:1px solid var(--line-bright);
+  color:var(--txt);background:rgba(18,22,30,.6);backdrop-filter:blur(8px);
+  transition:border-color .22s,background .22s,transform .22s,color .22s}
+.btn:hover{border-color:var(--accent);color:#fff;transform:translateY(-2px)}
+.btn-primary{background:var(--accent);color:#04262C;border-color:var(--accent);font-weight:600}
+.btn-primary:hover{background:#67E8F9;border-color:#67E8F9;color:#04262C}
+.btn svg{width:15px;height:15px;flex:none}
+
+.scroll-hint{position:absolute;left:50%;bottom:32px;transform:translateX(-50%);z-index:2;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--txt-faint);display:flex;flex-direction:column;align-items:center;gap:9px;
+  text-decoration:none;transition:color .22s}
+.scroll-hint:hover{color:var(--accent)}
+.scroll-hint i{display:block;width:1px;height:34px;background:linear-gradient(var(--txt-faint),transparent);
+  animation:drop 2.1s ease-in-out infinite}
+@keyframes drop{0%,100%{opacity:.25;transform:scaleY(.55);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+
+/* ---------- stats ---------- */
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-soft)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:34px 26px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:0}
+.stat .n{font-size:clamp(1.6rem,3.4vw,2.2rem);font-weight:700;letter-spacing:-.03em;color:var(--txt)}
+.stat .n em{font-style:normal;color:var(--accent)}
+.stat .l{font-size:12.5px;color:var(--txt-faint);margin-top:6px;line-height:1.45}
+
+/* ---------- sections ---------- */
+section{padding:104px 0}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:14px}
+.sec-num{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.1em}
+h2{font-size:clamp(1.75rem,4vw,2.5rem);letter-spacing:-.035em}
+.sec-sub{color:var(--txt-dim);max-width:62ch;margin-bottom:52px;font-size:16.5px}
+
+/* ---------- work ---------- */
+.work{display:grid;gap:20px;grid-template-columns:repeat(2,1fr)}
+.card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:16px;
+  padding:32px 30px 28px;overflow:hidden;transition:border-color .28s,transform .28s,background .28s}
+.card::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .34s;
+  background:radial-gradient(120% 90% at 0% 0%, rgba(34,211,238,.09), transparent 62%)}
+.card:hover{border-color:var(--line-bright);transform:translateY(-3px)}
+.card:hover::after{opacity:1}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:18px}
+.where{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--txt-faint)}
+.metric{font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--accent);
+  border:1px solid rgba(34,211,238,.28);background:rgba(34,211,238,.07);
+  padding:4px 11px;border-radius:999px;white-space:nowrap;flex:none}
+.card h3{font-size:1.24rem;margin-bottom:12px;letter-spacing:-.025em}
+.card p{color:var(--txt-dim);font-size:15px;line-height:1.68}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
+.tag{font-family:var(--mono);font-size:11px;color:var(--txt-faint);
+  border:1px solid var(--line-bright);padding:3px 9px;border-radius:5px}
+
+/* ---------- also shipped ---------- */
+.also{margin-top:20px;background:var(--bg-soft);border:1px solid var(--line);border-radius:16px;padding:30px}
+.also h3{font-size:.95rem;font-family:var(--mono);font-weight:500;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--txt-faint);margin-bottom:20px}
+.also ul{list-style:none;margin:0;padding:0;display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
+.also li{display:flex;gap:12px;color:var(--txt-dim);font-size:14.5px;line-height:1.6}
+.also li::before{content:"";flex:none;width:5px;height:5px;border-radius:50%;
+  background:var(--accent);margin-top:9px;opacity:.75}
+.also b{color:var(--txt);font-weight:500}
+
+/* ---------- experience ---------- */
+.tl{position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:4px;top:8px;bottom:8px;width:1px;background:var(--line)}
+.job{position:relative;padding-bottom:44px}
+.job:last-child{padding-bottom:0}
+.job::before{content:"";position:absolute;left:-30px;top:8px;width:9px;height:9px;border-radius:50%;
+  background:var(--bg);border:1px solid var(--line-bright)}
+.job.now::before{background:var(--accent);border-color:var(--accent);
+  box-shadow:0 0 0 4px rgba(34,211,238,.15)}
+.job-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px;margin-bottom:8px}
+.job-role{font-size:1.1rem;font-weight:600;letter-spacing:-.02em}
+.job-co{color:var(--accent);font-weight:500}
+.job-meta{font-family:var(--mono);font-size:11.5px;color:var(--txt-faint);margin-left:auto;white-space:nowrap}
+.job p{color:var(--txt-dim);font-size:15px;max-width:74ch}
+
+/* ---------- two-col ---------- */
+.duo{display:grid;grid-template-columns:1.15fr .85fr;gap:64px}
+.skill-row{padding:20px 0;border-top:1px solid var(--line);display:grid;
+  grid-template-columns:135px 1fr;gap:24px;align-items:start}
+.skill-row:last-child{border-bottom:1px solid var(--line)}
+.skill-row dt{font-family:var(--mono);font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--accent);padding-top:3px}
+.skill-row dd{margin:0;color:var(--txt-dim);font-size:14.8px;line-height:1.72}
+dl{margin:0}
+
+.edu{border-left:2px solid var(--line);padding-left:20px;margin-bottom:30px}
+.edu .deg{font-weight:600;font-size:1.02rem;letter-spacing:-.015em}
+.edu .sch{color:var(--accent);font-size:14.5px;margin-top:3px}
+.edu .yr{font-family:var(--mono);font-size:11.5px;color:var(--txt-faint);margin-top:5px}
+.edu .note{color:var(--txt-dim);font-size:14px;margin-top:9px;line-height:1.6}
+
+.awards{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.awards li{color:var(--txt-dim);font-size:14.3px;line-height:1.58;padding-left:20px;position:relative}
+.awards li::before{content:"◆";position:absolute;left:0;top:0;color:var(--accent);font-size:9px;line-height:2.1}
+.awards b{color:var(--txt);font-weight:500}
+
+/* ---------- contact ---------- */
+.contact{border-top:1px solid var(--line);background:var(--bg-soft);text-align:center;padding:112px 0}
+.contact h2{margin-bottom:18px}
+.contact p{color:var(--txt-dim);max-width:48ch;margin:0 auto 18px;font-size:17px}
+.avail{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--txt-faint);margin-bottom:34px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none;
+  box-shadow:0 0 0 0 rgba(34,211,238,.6);animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,211,238,.5)}70%{box-shadow:0 0 0 9px rgba(34,211,238,0)}100%{box-shadow:0 0 0 0 rgba(34,211,238,0)}}
+.mailto{display:inline-block;font-size:clamp(1.2rem,3.6vw,2rem);font-weight:600;letter-spacing:-.03em;
+  text-decoration:none;color:var(--txt);border-bottom:1px solid var(--line-bright);
+  padding-bottom:5px;transition:color .22s,border-color .22s;word-break:break-word}
+.mailto:hover{color:var(--accent);border-color:var(--accent)}
+.social{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:40px}
+
+footer{border-top:1px solid var(--line);padding:30px 0;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  font-family:var(--mono);font-size:11.5px;color:var(--txt-faint)}
+
+/* ---------- reveal ----------
+   Hidden only once JS has confirmed it can reveal them again, so the page is
+   never blank if the script fails to run. */
+.js .rv{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.js .rv.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .duo{grid-template-columns:1fr;gap:56px}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(3){border-left:0}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+}
+@media (max-width:760px){
+  .wrap{padding:0 20px}
+  section{padding:80px 0}
+  .work{grid-template-columns:1fr}
+  .also ul{grid-template-columns:1fr}
+  .job-meta{margin-left:0;width:100%}
+  .skill-row{grid-template-columns:1fr;gap:8px}
+  .cta{gap:10px}
+  .btn{padding:11px 18px;font-size:14px}
+  .hero{min-height:92svh;padding:96px 0 72px}
+  .contact{padding:88px 0}
+}
+@media (max-width:420px){
+  .stats-grid{grid-template-columns:1fr}
+  .stat{border-left:0;border-bottom:1px solid var(--line)}
+  .stat:last-child{border-bottom:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hero">
+  <canvas id="cloud" aria-hidden="true"></canvas>
+  <div class="hero-veil" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <div class="wrap">
+      <div class="eyebrow">London, UK</div>
+      <h1>
+        <span class="ln">Arushi</span>
+        <span class="ln">Agrawal</span>
+      </h1>
+      <p class="lede">
+        <b>Machine Learning Engineer</b> working in computer vision and 3D perception —
+        from model architecture and custom losses, through distributed pipelines,
+        to the API that serves them in production.
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#work">
+          See the work
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn" href="assets/Arushi_Agrawal_CV.pdf" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>
+          Download CV
+        </a>
+        <a class="btn" href="mailto:arushi.s.agrawal@gmail.com">Get in touch</a>
+      </div>
+    </div>
+  </div>
+
+  <a class="scroll-hint" href="#work" aria-label="Scroll to selected work"><span>Scroll</span><i></i></a>
+</header>
+
+<main id="main">
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat"><div class="n">3+<em>yrs</em></div><div class="l">Shipping production ML end-to-end</div></div>
+      <div class="stat"><div class="n">30M<em>+</em></div><div class="l">Users reached via Adobe Premiere&nbsp;Pro</div></div>
+      <div class="stat"><div class="n">8.5<em>×</em></div><div class="l">Speed-up on a flagship ML pipeline</div></div>
+      <div class="stat"><div class="n">MSc<em>·</em>Dist</div><div class="l">Machine Learning, UCL</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ WORK ============ -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">01</span><h2>Selected work</h2></div>
+    <p class="sec-sub rv">
+      Currently one of two ML engineers at a six-person startup, owning the defect-detection
+      and point-cloud pipeline behind an automated tunnel-inspection product.
+    </p>
+
+    <div class="work">
+
+      <article class="card rv">
+        <div class="card-top">
+          <span class="where">Inframind Labs</span>
+          <span class="metric">+27.6% 3D recall</span>
+        </div>
+        <h3>Depth-aware defect segmentation</h3>
+        <p>
+          Inflated a pretrained 3-channel Swin Transformer patch embedding to four channels so
+          Mask2Former could ingest RGB-D directly, and authored a recall-aware segmentation loss
+          in a forked Ultralytics YOLO. The production model detects five masonry-defect classes
+          across seven-plus rail and highway tunnel assets.
+        </p>
+        <div class="tags"><span class="tag">PyTorch</span><span class="tag">detectron2</span><span class="tag">Mask2Former</span><span class="tag">Swin</span><span class="tag">YOLO11</span><span class="tag">RGB-D</span></div>
+      </article>
+
+      <article class="card rv">
+        <div class="card-top">
+          <span class="where">Inframind Labs</span>
+          <span class="metric">zero manual labels</span>
+        </div>
+        <h3>3D → 2D auto-labelling</h3>
+        <p>
+          A pipeline that projects 3D-annotated defect point clouds onto rendered 2D views using
+          stable point-ID overlap and KD-tree matching, parallelised across a Ray cluster. It
+          auto-generates YOLO segmentation labels for six-plus tunnels and removed manual 2D
+          annotation from the loop entirely.
+        </p>
+        <div class="tags"><span class="tag">Open3D</span><span class="tag">Ray</span><span class="tag">KD-tree</span><span class="tag">Weak supervision</span></div>
+      </article>
+
+      <article class="card rv">
+        <div class="card-top">
+          <span class="where">Inframind Labs</span>
+          <span class="metric">121 → 14 min</span>
+        </div>
+        <h3>Rebuilding the pipeline on pure Ray</h3>
+        <p>
+          Led the migration of an eight-workflow point-cloud ML pipeline off Prefect+Ray, and wrote
+          the reusable six-phase playbook behind it. Profiler-driven CPU tuning cut end-to-end
+          runtime by 8–88%; the flagship workflow dropped from 121 to 14 minutes as effective
+          parallelism went from 0.97× to 13.5×.
+        </p>
+        <div class="tags"><span class="tag">Ray</span><span class="tag">Profiling</span><span class="tag">Distributed compute</span><span class="tag">Prefect</span></div>
+      </article>
+
+      <article class="card rv">
+        <div class="card-top">
+          <span class="where">Huawei</span>
+          <span class="metric">+8% reasoning</span>
+        </div>
+        <h3>Scene graphs for vision-language-action models</h3>
+        <p>
+          Built a foundation model generating scene graphs from robotics video with DINO, CLIP, SAM
+          and TAM, then LoRA-fine-tuned VLMs for spatial reasoning and action grounding. Feeding
+          graph-based spatial structure into VLA architectures lifted internal contextual-reasoning
+          benchmarks by 8% — and the robustness study exposed real cross-environment overfitting in
+          existing VLA models.
+        </p>
+        <div class="tags"><span class="tag">VLA</span><span class="tag">LoRA</span><span class="tag">DINO</span><span class="tag">CLIP</span><span class="tag">SAM</span></div>
+      </article>
+
+    </div>
+
+    <div class="also rv">
+      <h3>Also built</h3>
+      <ul>
+        <li><span><b>Multi-scale detection fusion</b> — noisy-OR point-probability fusion, mask-IoU grouping and 3D-centroid union-find clustering, killing duplicate and fragmented detections across rendered views.</span></li>
+        <li><span><b>View-order-independent 3D eval harness</b> — union-find dedup on mask IoU, reporting P/R/F1, Dice, IoU and recall-at-coverage. Diagnosed over-segmentation (purity ≈0.53 at coverage ≈0.94) as an inference-time fix, not a retraining bill.</span></li>
+        <li><span><b>Ray-backed serving on AKS</b> — a FastAPI submit/probe/result service proxying jobs through the Ray Jobs API with typed Pydantic contracts, containerised onto Azure Kubernetes Service with per-asset routing and HPA autoscaling.</span></li>
+        <li><span><b>Research at UCL</b> — retrieval-augmented language agents for long-horizon game play (RAG + FAISS, RLHF reward ranking, decision transformer), and a memory-augmented multi-agent critique loop over 77M-parameter models reaching ROUGE-1 F1 of 0.406.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">02</span><h2>Experience</h2></div>
+    <p class="sec-sub rv">Research, big tech, and a startup where I own the stack.</p>
+
+    <div class="tl">
+      <div class="job now rv">
+        <div class="job-head">
+          <span class="job-role">Machine Learning Engineer</span>
+          <span class="job-co">Inframind Labs</span>
+          <span class="job-meta">Oct 2025 — Present · London</span>
+        </div>
+        <p>Own the end-to-end computer-vision and point-cloud ML pipeline for an automated
+        tunnel-inspection product — model architecture, distributed inference, and production API serving.</p>
+      </div>
+
+      <div class="job rv">
+        <div class="job-head">
+          <span class="job-role">Reinforcement Learning Intern</span>
+          <span class="job-co">Huawei</span>
+          <span class="job-meta">Apr — Sep 2025 · London</span>
+        </div>
+        <p>Foundation models for scene-graph generation from robotics video; LoRA fine-tuning of
+        vision-language models for spatial reasoning, and generalisation analysis of VLA architectures.</p>
+      </div>
+
+      <div class="job rv">
+        <div class="job-head">
+          <span class="job-role">Software Development Engineer, GenAI</span>
+          <span class="job-co">Adobe</span>
+          <span class="job-meta">Jul 2022 — Aug 2024 · Bangalore</span>
+        </div>
+        <p>Shipped multimodal ML features into Adobe Premiere Pro (30M+ users) in C++ on an MVVM
+        architecture. Optimised a SegNeXt video-mask model through ONNX for a 17% accuracy gain, and
+        turned Hadoop-sourced interaction data into a 13% lift in feature adoption.</p>
+      </div>
+
+      <div class="job rv">
+        <div class="job-head">
+          <span class="job-role">Machine Learning Intern</span>
+          <span class="job-co">Text Mercato Solutions</span>
+          <span class="job-meta">Sep 2021 — Mar 2022 · Remote</span>
+        </div>
+        <p>U2-Net segmentation and Boundary-Aware PoolNet for salient object detection, feeding
+        automated product-description generation with NER and LSTMs — inference latency down 50%.</p>
+      </div>
+
+      <div class="job rv">
+        <div class="job-head">
+          <span class="job-role">Research Intern</span>
+          <span class="job-co">Adobe</span>
+          <span class="job-meta">May — Jul 2021 · Remote</span>
+        </div>
+        <p>Analysed 100M+ click-impression logs from Adobe Stock and filed a patent for a novel
+        user-behaviour click model using EM and time-series forecasting to predict affinity scores.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOOLKIT + BACKGROUND ============ -->
+<section id="about">
+  <div class="wrap">
+    <div class="duo">
+      <div>
+        <div class="sec-head rv"><span class="sec-num">03</span><h2>Toolkit</h2></div>
+        <p class="sec-sub rv">What I reach for, roughly in order of how often.</p>
+        <dl class="rv">
+          <div class="skill-row"><dt>Languages</dt><dd>Python · C++ · TypeScript · SQL · R · MATLAB · LaTeX</dd></div>
+          <div class="skill-row"><dt>Deep learning</dt><dd>PyTorch · detectron2 · Mask2Former · Swin Transformer · Ultralytics YOLOv8/11 · TensorFlow · Keras · Hugging Face · scikit-learn</dd></div>
+          <div class="skill-row"><dt>Vision &amp; 3D</dt><dd>Instance segmentation · RGB-D and multi-modal fusion · custom loss design · auto-labelling and weak supervision · Open3D · RANSAC · point-cloud geometry · OpenCV · mAP / IoU / Dice / F1</dd></div>
+          <div class="skill-row"><dt>GenAI &amp; LLM</dt><dd>RAG · LoRA fine-tuning · LangChain · FAISS · vector databases · prompt engineering</dd></div>
+          <div class="skill-row"><dt>MLOps</dt><dd>Ray · FastAPI · Docker · Kubernetes / AKS · Azure · CI/CD · profiling · Prefect · CUDA · ONNX</dd></div>
+        </dl>
+      </div>
+
+      <div>
+        <div class="sec-head rv"><span class="sec-num">04</span><h2>Background</h2></div>
+        <p class="sec-sub rv">Physics first, then machine learning.</p>
+
+        <div class="edu rv">
+          <div class="deg">MSc Machine Learning — Distinction</div>
+          <div class="sch">University College London</div>
+          <div class="yr">2024 — 2025</div>
+          <p class="note">Thesis: enhancing spatial reasoning in VLA models, in collaboration with Huawei.</p>
+        </div>
+
+        <div class="edu rv">
+          <div class="deg">B.Tech Engineering Physics — 8.45/10</div>
+          <div class="sch">IIT Guwahati</div>
+          <div class="yr">2018 — 2022</div>
+          <p class="note">Thesis: handling bias in visual question answering.</p>
+        </div>
+
+        <ul class="awards rv">
+          <li><b>Patent filed</b> at Adobe for a user-behaviour click model (EM + time-series forecasting).</li>
+          <li><b>1st of 1,086</b> — Shadowfax Cascade Cup 2022 national data science competition.</li>
+          <li><b>1st place</b>, Adobe Advanced C++ Boot Camp.</li>
+          <li><b>99.5th percentile</b> in JEE 2018, among 1.26 million candidates.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="rv">
+      <div class="avail"><span class="dot"></span>Open to ML engineering roles</div>
+      <h2>Let's talk.</h2>
+      <p>Happiest on problems where the model, the pipeline and the deployment are all still up for grabs.</p>
+      <a class="mailto" href="mailto:arushi.s.agrawal@gmail.com">arushi.s.agrawal@gmail.com</a>
+      <div class="social">
+        <a class="btn" href="https://www.linkedin.com/in/arushi-agrawal" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11.02 5 2.5 2.5 0 01-.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76V21h-4v-5.6c0-1.34-.03-3.07-1.9-3.07-1.9 0-2.2 1.46-2.2 2.97V21H9z"/></svg>
+          LinkedIn
+        </a>
+        <a class="btn" href="https://github.com/arushi-agrawal" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 00-3.79 23.4c.6.1.82-.26.82-.58v-2.2c-3.34.73-4.04-1.42-4.04-1.42-.55-1.4-1.34-1.77-1.34-1.77-1.1-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.23-.13-.3-.54-1.53.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 016 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.65.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.23 0 4.63-2.8 5.65-5.48 5.95.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.58A12 12 0 0012 .5z"/></svg>
+          GitHub
+        </a>
+        <a class="btn" href="assets/Arushi_Agrawal_CV.pdf" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>
+          CV
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
+    <span>© <span id="yr">2026</span> Arushi Agrawal</span>
+    <span>London, UK</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---------- scroll reveal ---------- */
+(function () {
+  var items = document.querySelectorAll('.rv');
+  function showAll() {
+    for (var i = 0; i < items.length; i++) items[i].classList.add('in');
+  }
+  if (!('IntersectionObserver' in window) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('js');
+    showAll();
+    return;
+  }
+  document.documentElement.classList.add('js');
+  // failsafe: never leave content hidden if the observer misses something
+  setTimeout(showAll, 4000);
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var sibs = Array.prototype.slice.call(e.target.parentNode.children).filter(function (n) {
+        return n.classList && n.classList.contains('rv');
+      });
+      e.target.style.transitionDelay = Math.min(sibs.indexOf(e.target), 4) * 70 + 'ms';
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  items.forEach(function (el) { io.observe(el); });
+})();
+
+/* ---------- hero: flying through a LiDAR-scanned tunnel ---------- */
+(function () {
+  var canvas = document.getElementById('cloud');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d', { alpha: true });
+  if (!ctx) return;
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var W = 0, H = 0, cx = 0, cy = 0, dpr = 1, RK = 0;
+  var NEAR = 240, FAR = 1500;
+  var FLOOR = 0.5;          // flattens the lower arc into a tunnel invert
+  var SQUASH = 0.86;        // bore is slightly wider than tall
+  var rings = [], visible = true, raf = null;
+  var pointer = { x: 0, y: 0, tx: 0, ty: 0 };
+
+  // Deterministic PRNG so the tunnel bore keeps a stable, believable shape.
+  function rand(seed) {
+    var s = Math.sin(seed * 127.1 + 311.7) * 43758.5453;
+    return s - Math.floor(s);
+  }
+
+  function build() {
+    rings = [];
+    var narrow = W < 700;
+    var ringCount = narrow ? 32 : 44;
+    var perRing = narrow ? 34 : 54;
+    var gap = (FAR - NEAR) / ringCount;
+
+    for (var i = 0; i < ringCount; i++) {
+      var pts = [];
+      for (var j = 0; j < perRing; j++) {
+        var a = (j / perRing) * Math.PI * 2 + rand(i * 31 + j) * 0.06;
+        pts.push({
+          a: a,
+          // irregular bore, like real masonry rather than a perfect pipe
+          rj: 1 + (rand(i * 7 + j * 13) - 0.5) * 0.09,
+          // a small share of points read as flagged defects
+          d: rand(i * 97 + j * 3) > 0.965
+        });
+      }
+      rings.push({ z: NEAR + i * gap, spin: rand(i) * Math.PI * 2, pts: pts });
+    }
+  }
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = canvas.clientWidth;
+    H = canvas.clientHeight;
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    // push the vanishing point right on wide screens so the headline sits on quiet ground
+    cx = W * (W > 900 ? 0.68 : 0.5);
+    cy = H * 0.48;
+    // the nearest ring should just overfill the frame; everything else follows from 1/z
+    RK = Math.min(H, W * 0.9) * 0.95 * NEAR;
+    build();
+  }
+
+  function draw(dt) {
+    ctx.clearRect(0, 0, W, H);
+
+    pointer.x += (pointer.tx - pointer.x) * 0.045;
+    pointer.y += (pointer.ty - pointer.y) * 0.045;
+    var ox = cx + pointer.x * 34;
+    var oy = cy + pointer.y * 26;
+
+    for (var i = 0; i < rings.length; i++) {
+      var ring = rings[i];
+
+      ring.z -= 1.6 * dt;
+      ring.spin += 0.00022 * dt;
+      if (ring.z < NEAR) ring.z += (FAR - NEAR);
+
+      // fade in from the far plane, fade out as the ring sweeps past the camera
+      var alpha = (0.16 + 0.84 * Math.min((FAR - ring.z) / 620, 1))
+                * Math.min((ring.z - NEAR) / 260, 1);
+      if (alpha <= 0.004) continue;
+
+      var rad = RK / ring.z;
+      var size = Math.max(0.8, Math.min(1500 / ring.z, 3.2));
+
+      for (var j = 0; j < ring.pts.length; j++) {
+        var p = ring.pts[j];
+        var ang = p.a + ring.spin;
+        var ca = Math.cos(ang);
+        var sa = Math.sin(ang);
+        if (sa > FLOOR) sa = FLOOR;   // flat invert underfoot
+
+        var r = rad * p.rj;
+        var sx = ox + ca * r;
+        var sy = oy + sa * r * SQUASH;
+
+        if (sx < -30 || sx > W + 30 || sy < -30 || sy > H + 30) continue;
+
+        if (p.d) {
+          ctx.fillStyle = 'rgba(34,211,238,' + (alpha * 0.95).toFixed(3) + ')';
+          ctx.beginPath();
+          ctx.arc(sx, sy, size * 1.45, 0, 6.2832);
+          ctx.fill();
+        } else {
+          ctx.fillStyle = 'rgba(168,186,210,' + (alpha * 0.58).toFixed(3) + ')';
+          ctx.fillRect(sx - size / 2, sy - size / 2, size, size);
+        }
+      }
+    }
+  }
+
+  var last = 0;
+  function loop(now) {
+    raf = requestAnimationFrame(loop);
+    if (!visible) return;
+    var dt = last ? Math.min(now - last, 48) : 16;
+    last = now;
+    draw(dt / 16.6667);
+  }
+
+  window.addEventListener('resize', function () {
+    resize();
+    if (reduced) draw(0);
+  }, { passive: true });
+
+  window.addEventListener('pointermove', function (e) {
+    if (reduced) return;
+    pointer.tx = (e.clientX / window.innerWidth) * 2 - 1;
+    pointer.ty = (e.clientY / window.innerHeight) * 2 - 1;
+  }, { passive: true });
+
+  // stop burning frames once the hero has scrolled away
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      visible = es[0].isIntersecting;
+      if (visible) last = 0;
+    }, { threshold: 0.01 }).observe(canvas);
+  }
+
+  resize();
+  if (reduced) {
+    draw(0);
+  } else {
+    raf = requestAnimationFrame(loop);
+  }
+})();
+</script>
+</body>
+</html>
