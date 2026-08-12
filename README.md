@@ -7,11 +7,3 @@ Personal portfolio for Arushi Agrawal, a Machine Learning Engineer working in co
 ## Stack
 
 Static and dependency-free: a single index.html with inline CSS and JS. No build step, no framework, no external requests. assets/Arushi_Agrawal_CV.pdf holds the downloadable CV.
-
-## Run locally
-
-```bash
-python3 -m http.server 8787
-```
-
-Then open http://127.0.0.1:8787
