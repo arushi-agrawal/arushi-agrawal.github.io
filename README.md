@@ -1,13 +1,14 @@
-# arushi-agrawal.github.io
+# Arushi Agrawal — Portfolio
 
-Personal portfolio — Machine Learning Engineer (computer vision & 3D perception).
+Live: https://arushi-agrawal.github.io
 
-Static, dependency-free: a single `index.html` with inline CSS/JS. No build step.
+Personal portfolio for Arushi Agrawal, a Machine Learning Engineer working in computer vision and 3D perception, covering model architecture and custom losses, distributed training pipelines, and the APIs that serve them in production. The site includes a professional summary, selected work, experience, technical toolkit, education, and a downloadable CV.
 
-- `index.html` — the whole site
-- `assets/Arushi_Agrawal_CV.pdf` — downloadable CV
+## Stack
 
-## Local preview
+Static and dependency-free: a single index.html with inline CSS and JS. No build step, no framework, no external requests. assets/Arushi_Agrawal_CV.pdf holds the downloadable CV.
+
+## Run locally
 
 ```bash
 python3 -m http.server 8787
